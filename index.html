@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teclado Franc&#233;s - Caracteres Especiales</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FFF9F0;
+    --card-bg: #FFFFFF;
+    --text: #2D2A26;
+    --text-soft: #6B6560;
+    --border: #E8E0D6;
+    --accent: #1565C0;
+    --accent-light: #E3F0FF;
+    --accent-hover: #0D47A1;
+    --green: #2E7D32;
+    --green-light: #E8F5E9;
+    --orange: #E65100;
+    --orange-light: #FFF3E0;
+    --purple: #6A1B9A;
+    --purple-light: #F3E5F5;
+    --key-bg: #FFFFFF;
+    --key-hover: #F0F7FF;
+    --key-active: #D6EBFF;
+    --key-shadow: 0 3px 0 #C5BDB3;
+    --key-shadow-active: 0 1px 0 #C5BDB3;
+    --radius: 16px;
+    --transition: 0.15s ease;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ===== MAIN CONTAINER ===== */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* ===== HEADER ===== */
+  .header {
+    text-align: center;
+    margin-bottom: 24px;
+    padding: 24px 20px;
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    border: 2px solid var(--border);
+  }
+
+  .header h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--accent);
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .header p {
+    font-size: 1.1rem;
+    color: var(--text-soft);
+    font-weight: 600;
+  }
+
+  /* ===== OUTPUT BOX ===== */
+  .output-box {
+    background: var(--card-bg);
+    border: 3px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 24px;
+    min-height: 90px;
+  }
+
+  .output-box-label {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .output-box-label .icon {
+    font-size: 1.1rem;
+  }
+
+  #output {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text);
+    min-height: 44px;
+    word-break: break-all;
+    line-height: 1.4;
+    padding: 8px 0;
+    border-bottom: 3px dashed var(--border);
+  }
+
+  .output-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    border: 3px solid;
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all var(--transition);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .btn-copy {
+    background: var(--green-light);
+    border-color: var(--green);
+    color: var(--green);
+  }
+  .btn-copy:hover { background: var(--green); color: white; }
+
+  .btn-back {
+    background: var(--orange-light);
+    border-color: var(--orange);
+    color: var(--orange);
+  }
+  .btn-back:hover { background: var(--orange); color: white; }
+
+  .btn-clear {
+    background: #FFEBEE;
+    border-color: #C62828;
+    color: #C62828;
+  }
+  .btn-clear:hover { background: #C62828; color: white; }
+
+  .btn .btn-icon {
+    font-size: 1.3rem;
+  }
+
+  /* ===== TAB NAVIGATION ===== */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    flex: 1;
+    min-width: 140px;
+    padding: 16px 12px;
+    border: 3px solid var(--border);
+    border-radius: 14px;
+    background: var(--card-bg);
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--text-soft);
+    cursor: pointer;
+    text-align: center;
+    transition: all var(--transition);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .tab:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: var(--accent-light);
+  }
+
+  .tab.active {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: white;
+    box-shadow: 0 4px 12px rgba(21, 101, 192, 0.3);
+  }
+
+  .tab .tab-icon {
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+  }
+
+  /* ===== KEYBOARD SECTIONS ===== */
+  .keyboard-section {
+    display: none;
+    background: var(--card-bg);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    animation: fadeIn 0.25s ease;
+  }
+
+  .keyboard-section.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-title {
+    font-size: 1.15rem;
+    font-weight: 900;
+    color: var(--accent);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .section-hint {
+    font-size: 0.95rem;
+    color: var(--text-soft);
+    font-weight: 600;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    padding: 12px 16px;
+    background: #FFF8E1;
+    border-radius: 10px;
+    border-left: 5px solid #FFB300;
+  }
+
+  /* ===== SUBSECTION ===== */
+  .subsection-label {
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-soft);
+    margin: 20px 0 12px 4px;
+    padding-top: 16px;
+    border-top: 2px solid var(--border);
+  }
+
+  .subsection-label:first-of-type {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
+
+  /* ===== KEY GRID ===== */
+  .key-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+    gap: 10px;
+  }
+
+  .key-grid.large-keys {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+  }
+
+  .key {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 72px;
+    padding: 10px 6px;
+    border-radius: 14px;
+    border: 3px solid var(--border);
+    background: var(--key-bg);
+    cursor: pointer;
+    transition: all var(--transition);
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: var(--key-shadow);
+  }
+
+  .key:hover {
+    border-color: var(--accent);
+    background: var(--key-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 0 #C5BDB3;
+  }
+
+  .key:active {
+    transform: translateY(2px);
+    box-shadow: var(--key-shadow-active);
+    background: var(--key-active);
+    border-color: var(--accent);
+  }
+
+  .key .char {
+    font-size: 1.7rem;
+    font-weight: 900;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .key .label {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: var(--text-soft);
+    margin-top: 4px;
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  /* Phoneme key accent colors */
+  .key.vowel-key { border-color: #B39DDB; }
+  .key.vowel-key .char { color: var(--purple); }
+  .key.vowel-key:hover { background: var(--purple-light); border-color: var(--purple); }
+  .key.vowel-key:active { background: #E1BEE7; }
+
+  .key.consonant-key { border-color: #90CAF9; }
+  .key.consonant-key .char { color: var(--accent); }
+  .key.consonant-key:hover { background: var(--accent-light); border-color: var(--accent); }
+  .key.consonant-key:active { background: #BBDEFB; }
+
+  .key.nasal-key { border-color: #FFAB91; }
+  .key.nasal-key .char { color: var(--orange); }
+  .key.nasal-key:hover { background: var(--orange-light); border-color: var(--orange); }
+  .key.nasal-key:active { background: #FFE0B2; }
+
+  .key.special-key { border-color: #A5D6A7; }
+  .key.special-key .char { color: var(--green); }
+  .key.special-key:hover { background: var(--green-light); border-color: var(--green); }
+  .key.special-key:active { background: #C8E6C9; }
+
+  /* ===== TOAST ===== */
+  .toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--green);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 10;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 600px) {
+    body { padding: 12px; }
+    .header h1 { font-size: 1.5rem; }
+    .key-grid { grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: 8px; }
+    .key { min-height: 64px; }
+    .key .char { font-size: 1.5rem; }
+    .tab { min-width: 100px; padding: 12px 8px; font-size: 0.9rem; }
+    .btn { padding: 12px 20px; font-size: 0.95rem; }
+    #output { font-size: 1.4rem; }
+  }
+
+  @media (min-width: 601px) {
+    .key-grid { grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div class="header">
+    <h1>&#9997;&#65039; Teclado Franc&#233;s</h1>
+    <p>Toque una letra para agregarla al texto</p>
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="output-box">
+    <div class="output-box-label">
+      <span class="icon">&#128221;</span> Su texto:
+    </div>
+    <div id="output"></div>
+    <div class="output-actions">
+      <button class="btn btn-copy" onclick="copyText()">
+        <span class="btn-icon">&#128203;</span> Copiar texto
+      </button>
+      <button class="btn btn-back" onclick="backspace()">
+        <span class="btn-icon">&#9664;</span> Borrar 1
+      </button>
+      <button class="btn btn-clear" onclick="clearText()">
+        <span class="btn-icon">&#128465;</span> Borrar todo
+      </button>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('accents', this)">
+      <span class="tab-icon">&#192;</span>
+      Acentos
+    </button>
+    <button class="tab" onclick="switchTab('special', this)">
+      <span class="tab-icon">&#171;</span>
+      Especiales
+    </button>
+    <button class="tab" onclick="switchTab('phonemes', this)">
+      <span class="tab-icon">&#643;</span>
+      Fonemas
+    </button>
+    <button class="tab" onclick="switchTab('ipa', this)">
+      <span class="tab-icon">/&#160;/</span>
+      S&#237;mbolos IPA
+    </button>
+  </div>
+
+  <!-- ===== SECTION: ACCENTS ===== -->
+  <div class="keyboard-section active" id="sec-accents">
+    <div class="section-title">&#127467;&#127479; Letras acentuadas del franc&#233;s</div>
+    <div class="section-hint">
+      &#128161; Estas son las letras con acentos que se usan en franc&#233;s y que no est&#225;n en un teclado normal.
+    </div>
+
+    <div class="subsection-label">Min&#250;sculas</div>
+    <div class="key-grid" id="grid-lower"></div>
+
+    <div class="subsection-label">May&#250;sculas</div>
+    <div class="key-grid" id="grid-upper"></div>
+  </div>
+
+  <!-- ===== SECTION: SPECIAL ===== -->
+  <div class="keyboard-section" id="sec-special">
+    <div class="section-title">&#128293; Ligaduras y caracteres especiales</div>
+    <div class="section-hint">
+      &#128161; Ligaduras como &#339; y signos de puntuaci&#243;n franceses como los guillemets &#171; &#187;.
+    </div>
+    <div class="key-grid large-keys" id="grid-special"></div>
+  </div>
+
+  <!-- ===== SECTION: PHONEMES ===== -->
+  <div class="keyboard-section" id="sec-phonemes">
+    <div class="section-title">&#127908; Fonemas del franc&#233;s (IPA)</div>
+    <div class="section-hint">
+      &#128161; Estos son los sonidos del franc&#233;s en el Alfabeto Fon&#233;tico Internacional. Cada bot&#243;n muestra el s&#237;mbolo y un ejemplo de palabra.
+    </div>
+
+    <div class="subsection-label">&#128312; Vocales orales</div>
+    <div class="key-grid large-keys" id="grid-vowels"></div>
+
+    <div class="subsection-label">&#128992; Vocales nasales</div>
+    <div class="key-grid large-keys" id="grid-nasals"></div>
+
+    <div class="subsection-label">&#128309; Semi-vocales</div>
+    <div class="key-grid large-keys" id="grid-semi"></div>
+
+    <div class="subsection-label">&#128311; Consonantes</div>
+    <div class="key-grid" id="grid-consonants"></div>
+  </div>
+
+  <!-- ===== SECTION: IPA SYMBOLS ===== -->
+  <div class="keyboard-section" id="sec-ipa">
+    <div class="section-title">&#128295; S&#237;mbolos IPA adicionales</div>
+    <div class="section-hint">
+      &#128161; Barras de transcripci&#243;n, marcas de acento, longitud y otros s&#237;mbolos para escribir en IPA.
+    </div>
+    <div class="key-grid large-keys" id="grid-ipa"></div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast">&#9989; &#161;Texto copiado!</div>
+
+<script>
+  /* ===== DATA ===== */
+  var lowerAccents = [
+    ["\u00e0","a grave"],["\u00e2","a circunflejo"],["\u00e4","a di\u00e9resis"],
+    ["\u00e9","e agudo"],["\u00e8","e grave"],["\u00ea","e circunflejo"],["\u00eb","e di\u00e9resis"],
+    ["\u00ee","i circunflejo"],["\u00ef","i di\u00e9resis"],
+    ["\u00f4","o circunflejo"],["\u00f6","o di\u00e9resis"],
+    ["\u00f9","u grave"],["\u00fb","u circunflejo"],["\u00fc","u di\u00e9resis"],
+    ["\u00ff","y di\u00e9resis"],["\u00e7","c cedilla"]
+  ];
+
+  var upperAccents = [
+    ["\u00c0","A grave"],["\u00c2","A circunflejo"],
+    ["\u00c9","E agudo"],["\u00c8","E grave"],["\u00ca","E circunflejo"],["\u00cb","E di\u00e9resis"],
+    ["\u00ce","I circunflejo"],["\u00d4","O circunflejo"],
+    ["\u00d9","U grave"],["\u00db","U circunflejo"],["\u00c7","C cedilla"]
+  ];
+
+  var specialChars = [
+    ["\u0153","o-e ligada"],["\u0152","O-E ligada"],
+    ["\u00e6","a-e ligada"],["\u00c6","A-E ligada"],
+    ["\u00ab","guillemet \u00ab"],["\u00bb","guillemet \u00bb"],
+    ["\u2039","guill. simple \u2039"],["\u203a","guill. simple \u203a"],
+    ["\u2019","ap\u00f3strofo"],["\u2014","gui\u00f3n largo"],["\u2026","puntos susp."]
+  ];
+
+  var vowels = [
+    ["i","vie (vida)"],["y","lune (luna)"],["\u0075","vous (usted)"],
+    ["e","\u00e9t\u00e9 (verano)"],["\u00f8","feu (fuego)"],["o","beau (bello)"],
+    ["\u025b","lait (leche)"],["\u0153","peur (miedo)"],
+    ["\u0254","porte (puerta)"],
+    ["a","patte (pata)"],["\u0251","p\u00e2te (masa)"],
+    ["\u0259","le (schwa)"]
+  ];
+
+  var nasals = [
+    ["\u025b\u0303","vin (vino)"],
+    ["\u0251\u0303","vent (viento)"],
+    ["\u0254\u0303","bon (bueno)"],
+    ["\u0153\u0303","brun (marr\u00f3n)"]
+  ];
+
+  var semiVowels = [
+    ["j","yeux (ojos)"],
+    ["w","oui (s\u00ed)"],
+    ["\u0265","huit (ocho)"]
+  ];
+
+  var consonants = [
+    ["p","pas"],["b","bas"],["t","ta"],["d","da"],
+    ["k","car"],["\u0261","gare"],
+    ["f","fou"],["v","vous"],
+    ["s","sa"],["z","zone"],
+    ["\u0283","chat (gato)"],["\u0292","joue (mejilla)"],
+    ["m","ma"],["n","na"],
+    ["\u0272","gnon (golpe)"],
+    ["\u014b","parking"],
+    ["l","la"],["\u0281","rue (calle)"]
+  ];
+
+  var ipaSymbols = [
+    ["/","barra fon\u00e9tica"],["[","corchete abrir"],["]","corchete cerrar"],
+    ["\u02c8","acento primario"],["\u02cc","acento secundario"],
+    ["\u02d0","vocal larga"],
+    ["\u0303","nasalizaci\u00f3n"],[".","separar s\u00edlabas"],
+    ["\u203f","liaison (enlace)"]
+  ];
+
+  /* ===== BUILD KEYS ===== */
+  function makeKey(charStr, labelStr, extraClass) {
+    var key = document.createElement("div");
+    key.className = "key" + (extraClass ? " " + extraClass : "");
+
+    var charSpan = document.createElement("span");
+    charSpan.className = "char";
+    charSpan.textContent = charStr;
+    key.appendChild(charSpan);
+
+    if (labelStr) {
+      var labelSpan = document.createElement("span");
+      labelSpan.className = "label";
+      labelSpan.textContent = labelStr;
+      key.appendChild(labelSpan);
+    }
+
+    key.addEventListener("click", function() {
+      var output = document.getElementById("output");
+      output.textContent += charStr;
+      // Scroll output into view
+      output.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    });
+
+    return key;
+  }
+
+  function fillGrid(gridId, items, keyClass) {
+    var grid = document.getElementById(gridId);
+    if (!grid) return;
+    for (var i = 0; i < items.length; i++) {
+      grid.appendChild(makeKey(items[i][0], items[i][1], keyClass || ""));
+    }
+  }
+
+  fillGrid("grid-lower", lowerAccents, "");
+  fillGrid("grid-upper", upperAccents, "");
+  fillGrid("grid-special", specialChars, "special-key");
+  fillGrid("grid-vowels", vowels, "vowel-key");
+  fillGrid("grid-nasals", nasals, "nasal-key");
+  fillGrid("grid-semi", semiVowels, "vowel-key");
+  fillGrid("grid-consonants", consonants, "consonant-key");
+  fillGrid("grid-ipa", ipaSymbols, "special-key");
+
+  /* ===== TAB SWITCHING ===== */
+  function switchTab(tabName, btn) {
+    // Deactivate all tabs
+    var tabs = document.querySelectorAll(".tab");
+    for (var i = 0; i < tabs.length; i++) {
+      tabs[i].classList.remove("active");
+    }
+    btn.classList.add("active");
+
+    // Hide all sections
+    var secs = document.querySelectorAll(".keyboard-section");
+    for (var j = 0; j < secs.length; j++) {
+      secs[j].classList.remove("active");
+    }
+
+    // Show target
+    var target = document.getElementById("sec-" + tabName);
+    if (target) {
+      target.classList.add("active");
+    }
+  }
+
+  /* ===== ACTIONS ===== */
+  function copyText() {
+    var text = document.getElementById("output").textContent;
+    if (!text) return;
+    var textarea = document.createElement("textarea");
+    textarea.value = text;
+    textarea.style.position = "fixed";
+    textarea.style.left = "-9999px";
+    textarea.style.top = "-9999px";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.focus();
+    textarea.select();
+    try {
+      document.execCommand("copy");
+      var toast = document.getElementById("toast");
+      toast.classList.add("show");
+      setTimeout(function() { toast.classList.remove("show"); }, 2000);
+    } catch (err) {
+      // fallback: try modern API
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function() {
+          var toast = document.getElementById("toast");
+          toast.classList.add("show");
+          setTimeout(function() { toast.classList.remove("show"); }, 2000);
+        });
+      }
+    }
+    document.body.removeChild(textarea);
+  }
+
+  function backspace() {
+    var output = document.getElementById("output");
+    var text = output.textContent;
+    if (text.length > 0) {
+      var arr = Array.from(text);
+      arr.pop();
+      output.textContent = arr.join("");
+    }
+  }
+
+  function clearText() {
+    document.getElementById("output").textContent = "";
+  }
+</script>
+
+</body>
+</html>
